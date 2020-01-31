@@ -9,7 +9,7 @@ export default function SearchForm() {
   return (
     <section className="search-form">
      <FormDiv action="">
-       <lable><span>Search: </span></lable>
+       <label><span>Search: </span></label>
        <input type="text"/>
      </FormDiv>
     </section>
