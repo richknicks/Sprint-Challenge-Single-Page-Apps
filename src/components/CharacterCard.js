@@ -2,8 +2,8 @@ import React from "react";
 
 
 export default function CharacterCard(props) {
-  return <div>
-    <img src={props.image} alt="image"/>
+  return (<div>
+    <img src={props.photo} alt="image"/>
     <p>{props.key}</p>
     <p>{props.name}</p>
     <p>{props.status}</p>
@@ -12,5 +12,5 @@ export default function CharacterCard(props) {
     <p>{props.gender}</p>
     <p>{props.origin}</p>
   </div>
-  ;
+  );
 }
