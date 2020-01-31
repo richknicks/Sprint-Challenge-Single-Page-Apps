@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import CharacterCard from './CharacterCard';
-import SearchForm from "./SearchForm";
 import axios from "axios";
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
