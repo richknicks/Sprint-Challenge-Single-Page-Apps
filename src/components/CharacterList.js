@@ -27,7 +27,8 @@ export default function CharacterList() {
           <CharacterCard
           name = {character.name}
           species = {character.species}
-          photo = {character.image}/>
+          photo = {character.image}
+          gender = {character.gender}/>
         )
       })}
       </div>
