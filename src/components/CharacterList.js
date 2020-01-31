@@ -15,11 +15,21 @@ export default function CharacterList() {
     .catch(error =>{
       console.log("The data was not returned", error);
     } )
-  }, []);
+  }, [query]);
 
   return (
     <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
+      <h2>{character.map(characters => {
+        <CharacterCard
+        key = {characters.id}
+        name = {characters.name}
+        status = {characters.status}
+        species = {characters.species}
+        type = {characters.type}
+        gender = {characters.gender}
+        origin = {characters.origin}
+        />
+      })}</h2>
     </section>
   );
 }
