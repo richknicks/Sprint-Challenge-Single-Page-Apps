@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CharacterCard(props) {
   return (<div>
-    <img src={props.photo} alt="image"/>
+    <img src={props.image} alt="image"/>
     <p>{props.name}</p>
     <p>{props.species}</p>
     <p>{props.gender}</p>

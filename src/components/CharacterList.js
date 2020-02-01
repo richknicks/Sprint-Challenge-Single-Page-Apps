@@ -1,38 +1,51 @@
 import React, { useEffect, useState } from "react";
-import CharacterCard from './CharacterCard';
-import axios from "axios";
+import axios from 'axios';
+import CharacterCard from "./CharacterCard"
+import styled from "styled-components"
+const SearchBar = styled.div`
+text-align:center
+`;
 export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
-  const [character, setCharacter] = useState([])
-  
+const [data, setData] = useState([])
+const [query, setQuery] = useState("");
   useEffect(() => {
-    axios.get("https://rickandmortyapi.com/api/character/")
-    .then(response => {
+    axios
+     .get("https://rickandmortyapi.com/api/character/")
+     .then(response => {
       console.log(response.data.results)
-      setCharacter(response.data.results)
-      
-    })
-    .catch(error =>{
-      console.log(error)
-    })
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
-
+       const characters = response.data.results.filter(character =>
+        character.name.toLowerCase().includes(query.toLowerCase())
+        );
+        // console.log("harry potter characters", response);
+        setData(characters);
+      });
+  }, [query]);
+  const handleInputChange = event => {
+    setQuery(event.target.value);
+  };
   return (
-    <section className="character-list">
-      <h2>Characters</h2>
+    <SearchBar>
+    <form>
+    <input 
+    type="text"
+    onChange={handleInputChange}
+    value={query}
+    placeholder="search here"
+    />
+    </form>
     <div className="grid-view">
-      {character.map(character =>{
-        return ( 
-          <CharacterCard
-          name = {character.name}
-          species = {character.species}
-          photo = {character.image}
-          gender = {character.gender}/>
-        )
-      })}
-      </div>
-    </section>
-  )
-}
+    {data.map(characters => {
+      return (
+      <CharacterCard
+        id={characters.id}
+        name={characters.name}
+        status={characters.status}
+        species={characters.species}
+        image={characters.image}
+        gender={characters.gender}
+      />
+      )
+    })}
+    </div>
+  </SearchBar>
+  )}
