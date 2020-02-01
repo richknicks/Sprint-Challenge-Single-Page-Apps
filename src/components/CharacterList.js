@@ -4,7 +4,9 @@ import CharacterCard from "./CharacterCard"
 import styled from "styled-components"
 const SearchBar = styled.div`
 text-align:center
+margin-bottom: 20px;
 `;
+
 export default function CharacterList() {
 const [data, setData] = useState([])
 const [query, setQuery] = useState("");
@@ -24,15 +26,15 @@ const [query, setQuery] = useState("");
     setQuery(event.target.value);
   };
   return (
+    <div>
     <SearchBar>
-    <form>
     <input 
     type="text"
     onChange={handleInputChange}
     value={query}
     placeholder="search here"
     />
-    </form>
+    </SearchBar>
     <div className="grid-view">
     {data.map(characters => {
       return (
@@ -47,5 +49,5 @@ const [query, setQuery] = useState("");
       )
     })}
     </div>
-  </SearchBar>
+  </div>
   )}
